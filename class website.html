@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Class Magazine 2025</title>
+  <style>
+    /* ===== Global Styles ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+    body { font-family: "Segoe UI", Tahoma, sans-serif; background: #f5f7fa; color: #333; }
+    h1, h2 { font-weight: bold; }
+    a { text-decoration: none; }
+
+    /* ===== Hero Section ===== */
+    header {
+      height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; color: white;
+      background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                  url('photo1.jpg') no-repeat center/cover;
+    }
+    header h1 { font-size: 4rem; animation: fadeInDown 2s ease; }
+    header p { font-size: 1.5rem; margin-top: 10px; animation: fadeInUp 2s ease; }
+    @keyframes fadeInDown { from{opacity:0; transform:translateY(-50px);} to{opacity:1; transform:translateY(0);} }
+    @keyframes fadeInUp { from{opacity:0; transform:translateY(50px);} to{opacity:1; transform:translateY(0);} }
+
+    /* ===== Nav ===== */
+    nav { position: sticky; top: 0; background: #111; padding: 15px; text-align: center; z-index: 1000; }
+    nav a { color: white; margin: 0 20px; font-weight: bold; transition: 0.3s; }
+    nav a:hover { color: #00ffcc; }
+
+    /* ===== Sections ===== */
+    section { padding: 60px 20px; max-width: 1100px; margin: auto; }
+    section h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: #0066cc; position: relative; }
+    section h2::after {
+      content: ""; display: block; width: 80px; height: 4px; background: #00cc99;
+      margin: 10px auto 0; border-radius: 2px;
+    }
+
+    /* ===== Cards & Grid ===== */
+    .card {
+      background: white; padding: 25px; border-radius: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1); margin-bottom: 20px;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+    .card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(0,0,0,0.2); }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
+
+    /* ===== Gallery ===== */
+    .gallery { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; }
+    .gallery img { width: 100%; border-radius: 10px; transition: 0.3s; cursor: pointer; }
+    .gallery img:hover { transform: scale(1.05); }
+
+    /* ===== Slideshow ===== */
+    .slideshow-container { position: relative; max-width: 1000px; margin: auto; }
+    .slide { display: none; }
+    .slide img { width: 100%; border-radius: 15px; }
+    .prev, .next {
+      cursor: pointer; position: absolute; top: 50%; padding: 16px; margin-top: -22px;
+      color: white; font-weight: bold; font-size: 20px;
+      background: rgba(0,0,0,0.5); border-radius: 50%; user-select: none;
+    }
+    .next { right: 10px; } .prev { left: 10px; }
+    .prev:hover, .next:hover { background: rgba(0,0,0,0.8); }
+
+    /* ===== Button ===== */
+    .btn {
+      display: inline-block; padding: 12px 25px; margin: 20px auto; text-align: center;
+      background: #00cc99; color: white; border-radius: 8px; font-weight: bold; transition: 0.3s;
+    }
+    .btn:hover { background: #009977; }
+
+    /* ===== Team Section ===== */
+    .team { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; text-align: center; }
+    .team img { width: 150px; height: 150px; object-fit: cover; border-radius: 50%; margin-bottom: 15px; }
+    .team .card { padding: 20px; }
+
+    /* ===== Contact Form ===== */
+    form { display: flex; flex-direction: column; gap: 15px; max-width: 600px; margin: auto; }
+    input, textarea {
+      padding: 12px; border: 1px solid #ccc; border-radius: 8px; font-size: 1rem;
+    }
+    input:focus, textarea:focus { border-color: #00cc99; outline: none; }
+    button {
+      padding: 12px; background: #0066cc; color: white; border: none; border-radius: 8px;
+      font-weight: bold; cursor: pointer; transition: 0.3s;
+    }
+    button:hover { background: #004999; }
+
+    /* ===== Back to Top ===== */
+    #topBtn {
+      display: none; position: fixed; bottom: 20px; right: 20px; z-index: 100;
+      background: #00cc99; color: white; border: none; padding: 12px 16px;
+      border-radius: 50%; cursor: pointer; font-size: 20px;
+    }
+    #topBtn:hover { background: #009977; }
+
+    /* ===== Footer ===== */
+    footer { background: #111; color: white; text-align: center; padding: 20px; margin-top: 30px; }
+  </style>
+</head>
+<body>
+  <!-- Hero -->
+  <header>
+    <h1>Class of 2025 Magazine</h1>
+    <p>Celebrating memories, achievements, and milestones 🎉</p>
+    <a href="yearbook.pdf" class="btn" download>📖 Download Yearbook (PDF)</a>
+  </header>
+
+  <!-- Nav -->
+  <nav>
+    <a href="#memories">Memories</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#scholarships">Scholarships</a>
+    <a href="#certificates">Certificates</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#slideshow">Slideshow</a>
+    <a href="#team">Our Class</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <!-- Memories -->
+  <section id="memories">
+    <h2>Memories</h2>
+    <div class="grid">
+      <div class="card">✨ First day of school — excitement everywhere.</div>
+      <div class="card">🏆 Our big sports day victory!</div>
+      <div class="card">🎉 The unforgettable class party.</div>
+    </div>
+  </section>
+
+  <!-- Achievements -->
+  <section id="achievements">
+    <h2>Achievements</h2>
+    <div class="grid">
+      <div class="card">📚 Top scores in national exams.</div>
+      <div class="card">🎤 Debate team reached nationals.</div>
+      <div class="card">💻 Coding challenge champions.</div>
+    </div>
+  </section>
+
+  <!-- Scholarships -->
+  <section id="scholarships">
+    <h2>Scholarships</h2>
+    <div class="grid">
+      <div class="card">🌟 Jane Doe — National Science Scholarship.</div>
+      <div class="card">🌟 John Smith — Engineering Merit Award.</div>
+    </div>
+  </section>
+
+  <!-- Certificates -->
+  <section id="certificates">
+    <h2>Certificates</h2>
+    <div class="grid">
+      <div class="card">✔️ Leadership Excellence Award.</div>
+      <div class="card">✔️ Community Service Recognition.</div>
+      <div class="card">✔️ Sportsmanship Honor.</div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="gallery">
+    <h2>Photo Gallery</h2>
+    <div class="gallery">
+      <img src="photo1.jpg" alt="Sports Day">
+      <img src="photo2.jpg" alt="Graduation">
+      <img src="party.png" alt="Class Party">
+      <img src="certificate1.jpg" alt="Best Student Award">
+    </div>
+  </section>
+
+  <!-- Slideshow -->
+  <section id="slideshow">
+    <h2>Highlights Slideshow</h2>
+    <div class="slideshow-container">
+      <div class="slide"><img src="photo1.jpg" alt="Highlight 1"></div>
+      <div class="slide"><img src="photo2.jpg" alt="Highlight 2"></div>
+      <div class="slide"><img src="party.png" alt="Highlight 3"></div>
+      <a class="prev" onclick="plusSlides(-1)">❮</a>
+      <a class="next" onclick="plusSlides(1)">❯</a>
+    </div>
+  </section>
+
+  <!-- Team Section -->
+  <section id="team">
+    <h2>Our Class</h2>
+    <div class="team">
+      <div class="card">
+        <img src="student1.jpg" alt="Student 1">
+        <h3>Jane Doe</h3>
+        <p>Class President</p>
+      </div>
+      <div class="card">
+        <img src="student2.jpg" alt="Student 2">
+        <h3>John Smith</h3>
+        <p>Sports Captain</p>
+      </div>
+      <div class="card">
+        <img src="student3.jpg" alt="Student 3">
+        <h3>Mary Lee</h3>
+        <p>Top Scholar</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <form name="contact" method="POST" data-netlify="true">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5" placeholder="Your Message"></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Class of Excellence | Built with ❤️ and memories</p>
+  </footer>
+
+  <!-- Back to Top -->
+  <button id="topBtn" onclick="topFunction()">⬆</button>
+
+  <!-- Scripts -->
+  <script>
+    // Slideshow
+    let slideIndex = 0;
+    showSlides();
+    function plusSlides(n) { slideIndex += n - 1; showSlides(); }
+    function showSlides() {
+      let slides = document.getElementsByClassName("slide");
+      for (let i = 0; i < slides.length; i++) slides[i].style.display = "none";
+      slideIndex++;
+      if (slideIndex > slides.length) slideIndex = 1;
+      if (slideIndex < 1) slideIndex = slides.length;
+      slides[slideIndex-1].style.display = "block";
+      setTimeout(showSlides, 4000);
+    }
+
+    // Back to Top
+    let topBtn = document.getElementById("topBtn");
+    window.onscroll = function() { scrollFunction(); };
+    function scrollFunction() {
+      if (document.body.scrollTop > 200 || document.documentElement.scrollTop > 200) {
+        topBtn.style.display = "block";
+      } else {
+        topBtn.style.display = "none";
+      }
+    }
+    function topFunction() {
+      document.body.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+    }
+  </script>
+</body>
+</html>
